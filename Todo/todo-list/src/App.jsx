@@ -15,7 +15,7 @@ function addTask(userInput){
       id: nanoid(),
       task: userInput,
       completed:false,
-      editing:false
+      isEditing:false
     }
     setTodos([...todos, newTask])
   }
@@ -25,6 +25,16 @@ const removeTask = (id) =>{
   setTodos([...todos.filter((todo) => (todo.id !== id))])
 };
 
+const completeTask = (id) => {
+  setTodos([...todos.map((todo) => ((todo.id===id) ? {...todo, completed: !todo.completed}: todo))])
+}
+
+const editTask = (id) => {
+  setTodos([...todos.map((todo)=>(todo.id === id) ? {...todo, isEditing: !todo.isEditing} : todo)])
+}
+const editTodo = (task, id) => {
+  setTodos([...todos.map((todo)=>(todo.id === id) ? {...todo, task, isEditing: !todo.isEditing} : todo)])
+}
   return (
     <>
     <h1>Todo List</h1>
@@ -32,10 +42,19 @@ const removeTask = (id) =>{
     <TodoForm
     addTask={addTask}/>
     {todos.map((todo) =>(
-    <TodoItem
+      (todo.isEditing)? 
+      (<EditTodoForm
+          key={todo.id}
+          task={todo}
+          editTask={editTodo}
+          />
+        ):
+      (<TodoItem
     todo={todo}
     key={todo.id}
-    removeTask={removeTask}/>
+    removeTask={removeTask}
+    completeTask={completeTask}
+    editTask={editTask}/>)
     ))}
 
   
