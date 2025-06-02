@@ -19,10 +19,11 @@ function addTask(userInput){
     }
     setTodos([...todos, newTask])
   }
-
 }
 
-
+const removeTask = (id) =>{
+  setTodos([...todos.filter((todo) => (todo.id !== id))])
+};
 
   return (
     <>
@@ -33,7 +34,8 @@ function addTask(userInput){
     {todos.map((todo) =>(
     <TodoItem
     todo={todo}
-    key={todo.id}/>
+    key={todo.id}
+    removeTask={removeTask}/>
     ))}
 
   

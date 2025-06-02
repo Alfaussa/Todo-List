@@ -12,7 +12,8 @@ const TodoForm = ({addTask, }) => {
 
     const handleClick = (event) =>{
         event.preventDefault();
-        addTask(userInput)
+        addTask(userInput);
+        setUserInput("")
     }
 
   return (
