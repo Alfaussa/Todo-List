@@ -7,60 +7,10 @@ import './App.css'
 
 function App() {
   
-const[todos, setTodos] = useState([]);
 
-function addTask(userInput){
-  if(userInput){
-    let newTask = {
-      id: nanoid(),
-      task: userInput,
-      completed:false,
-      isEditing:false
-    }
-    setTodos([...todos, newTask])
-  }
-}
-
-const removeTask = (id) =>{
-  setTodos([...todos.filter((todo) => (todo.id !== id))])
-};
-
-const completeTask = (id) => {
-  setTodos([...todos.map((todo) => ((todo.id===id) ? {...todo, completed: !todo.completed}: todo))])
-}
-
-const editTask = (id) => {
-  setTodos([...todos.map((todo)=>(todo.id === id) ? {...todo, isEditing: !todo.isEditing} : todo)])
-}
-const editTodo = (task, id) => {
-  setTodos([...todos.map((todo)=>(todo.id === id) ? {...todo, task, isEditing: !todo.isEditing} : todo)])
-}
-  return (
+  return 
     <>
-    <h1>Todo List</h1>
-    <hr/>
-    <TodoForm
-    addTask={addTask}/>
-    {todos.map((todo) =>(
-      (todo.isEditing)? 
-      (<EditTodoForm
-          key={todo.id}
-          task={todo}
-          editTask={editTodo}
-          />
-        ):
-      (<TodoItem
-    todo={todo}
-    key={todo.id}
-    removeTask={removeTask}
-    completeTask={completeTask}
-    editTask={editTask}/>)
-    ))}
-
-  
-
-    </>
-  )
+   </>
 }
 
 export default App
