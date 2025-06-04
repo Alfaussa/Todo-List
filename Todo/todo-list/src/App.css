@@ -4,7 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
-
+.item-container{
+  display: flex;
+  width:50%;
+  
+}
 .completed {
   text-decoration: line-through;
 }
