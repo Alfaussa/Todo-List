@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 
-const TodoForm = ({addTask}) => {
+const TodoForm = ({addTask, }) => {
 
-  const [userInput, setUserInput] = useState('');
-
-  function handleChange(event){
-    setUserInput(event.target.value)
+  const [userInput, setUserinput] = useState('');
+ 
+  const handleChange = (event) => {
+    setUserinput(event.target.value)
   }
 
-  function handleClick(event){
+  const handleClick = (event) => {
     event.preventDefault();
     addTask(userInput);
-    setUserInput('');
+    setUserinput('');
   }
+
+
   return (
+  <form onClick={handleClick}> 
+    <input value={userInput} onChange={handleChange} type='text' placeholder='add your task ...' className='todo-input'></input>
+    <button className='todo-button'></button>
+  </form>
 
-
-    <form onSubmit={((userInput) => handleClick(userInput))}>
-      <input value={userInput} className='todo-input' type="text" placeholder='add your task...' onChange={handleChange}></input>
-      <button type="submit" className='todo-button'>save</button>
-      </form>
   )
 }
 
