@@ -4,9 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-.item-container{
-  display: flex;
-  width:50%;
+.todo-container,.todo-icon-container {
+display: flex;
+  align-items: center;
+  justify-content: space-between;
   
 }
 
