@@ -20,15 +20,44 @@ function App() {
       setTodos([...todos, newTask])
     }
   }
-
-
+  const completeTask = (id) => {
+    setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, isCompleted:!todo.isCompleted}: todo)])
+  }
+  const removeTask = (id) => {
+    setTodos([...todos.filter((todo)=>(id !== todo.id))])
+  }
+  const editTask = (id) => {
+    setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, isEdititg: !todo.isEdititg } : todo)])
+  }
+  const editTodo = (task, id) => {
+   setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, task, isEdititg: !todo.isEdititg } : todo)])
+  } 
+  
   return (
     <>
     <h1>Todo List</h1>
+
     <TodoForm
     addTask={addTask}/>
+      
+    
+{todos.map((todo)=>(
+  (todo.isEdititg) ?
+  <EditTodoForm
+  key={todo.id}
+  task={todo}
+  editTodo={editTodo}
 
-    <TodoItem/>
+  /> :
+  <TodoItem
+    todo={todo}
+    key={todo.id}
+    completeTask={completeTask}
+    removeTask={removeTask}
+    editTask={editTask}
+    />
+    ))}
+    
 
     </>
   )
