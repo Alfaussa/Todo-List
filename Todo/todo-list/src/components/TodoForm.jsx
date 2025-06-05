@@ -16,9 +16,9 @@ const TodoForm = ({addTask, }) => {
 
 
   return (
-  <form onClick={handleClick}> 
+  <form className='todo-form' onClick={handleClick}> 
     <input value={userInput} onChange={handleChange} type='text' placeholder='add your task ...' className='todo-input'></input>
-    <button className='todo-button'></button>
+    <button className='todo-button'>save</button>
   </form>
 
   )

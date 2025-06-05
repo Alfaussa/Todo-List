@@ -34,12 +34,12 @@ function App() {
   } 
   
   return (
-    <>
-    <h1>Todo List</h1>
+    <div className='todo-wrapper'>
+    <h1 className='todo-header'>Todo List</h1>
 
     <TodoForm
     addTask={addTask}/>
-      
+    <hr className='todo-divider'/>
     
 {todos.map((todo)=>(
   (todo.isEdititg) ?
@@ -59,7 +59,7 @@ function App() {
     ))}
     
 
-    </>
+    </div>
   )
 
 }

@@ -16,9 +16,9 @@ const EditTodoForm = ({editTodo, task}) => {
 
 
   return (
-  <form onSubmit={(userInput)=>handleClick(userInput)}> 
+  <form className='todo-form'onSubmit={(userInput)=>handleClick(userInput)}> 
     <input value={userInput} onChange={handleChange} type='text' placeholder='add your task ...' className='todo-input'></input>
-    <button className='todo-button'></button>
+    <button className='todo-button'>save</button>
   </form>
 
   )
