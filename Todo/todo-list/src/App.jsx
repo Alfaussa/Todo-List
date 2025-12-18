@@ -15,7 +15,7 @@ function App() {
         id: nanoid(),
         task: userInput,
         isCompleted:false,
-        isEdititg: false
+        isEditing: false
       }
       setTodos([...todos, newTask])
     }
@@ -27,13 +27,14 @@ function App() {
     setTodos([...todos.filter((todo)=>(id !== todo.id))])
   }
   const editTask = (id) => {
-    setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, isEdititg: !todo.isEdititg } : todo)])
+    setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, isEditing: !todo.isEditing } : todo)])
   }
   const editTodo = (task, id) => {
-   setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, task, isEdititg: !todo.isEdititg } : todo)])
+   setTodos([...todos.map((todo)=>(id === todo.id) ? {...todo, task, isEditing: !todo.isEditing } : todo)])
   } 
   
   return (
+    <div className="modal-overlay">
     <div className='todo-wrapper'>
     <h1 className='todo-header'>Todo List</h1>
 
@@ -42,7 +43,7 @@ function App() {
     <hr className='todo-divider'/>
     
 {todos.map((todo)=>(
-  (todo.isEdititg) ?
+  (todo.isEditing) ?
   <EditTodoForm
   key={todo.id}
   task={todo}
@@ -59,6 +60,7 @@ function App() {
     ))}
     
 
+    </div>
     </div>
   )
 
